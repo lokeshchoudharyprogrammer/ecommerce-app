@@ -9,6 +9,8 @@ import Contact from './pages/Contact';
 import { Policy } from './pages/Policy';
 import { Pagenotefound } from './pages/Pagenotefound';
 import AllRouter from './Router/AllRouter';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 

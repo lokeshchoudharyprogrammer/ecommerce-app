@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+
         trim: true
 
     },
@@ -28,8 +28,7 @@ const userSchema = new mongoose.Schema({
         unique: true
 
     },
-    address:
-    {
+    address: {
         type: String,
         required: true,
         trim: true,

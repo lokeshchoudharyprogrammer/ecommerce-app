@@ -4,6 +4,8 @@ import colors from "colors"
 import morgan from "morgan"
 import connection from "./config/db.js"
 import authrouter from "./routes/authRouter.js"
+import cors from "cors"
+
 dotenv.config()
 
 colors.setTheme({
@@ -23,7 +25,7 @@ const app = express()
 
 app.use(express.json())
 app.use(morgan("dev"))
-
+app.use(cors())
 app.use("/api/v1/auth", authrouter)
 
 connection()
