@@ -32,17 +32,7 @@ export const Register = () => {
                     }
                 })
 
-            // success
-
-            // if (res.status == 200) {
-            //     toast.success("Registration Done")
-            //     navigate("/login")
-            // } else {
-
-            //     toast.error("Registration Error")
-            // }
-            // toast.success("Registration Successful")
-        } catch (error) {
+           } catch (error) {
             console.log("error")
             toast.error("Registration Error")
 
