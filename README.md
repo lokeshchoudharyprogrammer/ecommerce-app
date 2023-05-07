@@ -20,3 +20,6 @@ Dillinger uses a number of open source projects to work properly:
 
 And of course Dillinger itself is open source with a [public repository][dill]
  on GitHub.
+
+
+## Snippets of Our Website-
