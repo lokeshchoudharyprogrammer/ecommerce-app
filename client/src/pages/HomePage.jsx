@@ -8,7 +8,7 @@ import "../styles/Homepage.css";
 import { Prices } from './../components/Prices';
 import { useCart } from "../context/cart";
 import Layout from "../components/Layout";
-
+import banner from "../baner.webp"
 const HomePage = () => {
     const navigate = useNavigate();
     const [cart, setCart] = useCart();
@@ -110,7 +110,7 @@ const HomePage = () => {
         <Layout title={"ALl Products - Best offers "}>
             {/* banner image */}
             <img
-                src="/images/banner.png"
+                src={banner}
                 className="banner-img"
                 alt="bannerimage"
                 width={"100%"}
@@ -155,7 +155,7 @@ const HomePage = () => {
                         {products?.map((p) => (
                             <div className="card m-2" key={p._id}>
                                 <img
-                                    
+
 
                                     src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                                     className="card-img-top"
@@ -213,7 +213,7 @@ const HomePage = () => {
                                 ) : (
                                     <>
                                         {" "}
-                                        More <AiOutlineReload />
+                                        Show  More....<AiOutlineReload />
                                     </>
                                 )}
                             </button>

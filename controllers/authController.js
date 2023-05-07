@@ -2,7 +2,9 @@
 import JWT from "jsonwebtoken";
 import { hashPassword, comparePassword } from './../helper/authHelper.js';
 import userModel from "../models/userModel.js";
+import orderModel from "../models/orderModel.js";
 // userModel
+// orderModel
 
 export const registerController = async (req, res) => {
     try {
@@ -162,18 +164,6 @@ export const forgotPasswordController = async (req, res) => {
     }
 };
 
-
-//test controller
-// export const testController = (req, res) => {
-//     try {
-//       res.send("Protected Routes");
-//     } catch (error) {
-//       console.log(error);
-//       res.send({ error });
-//     }
-//   };
-
-//update prfole
 export const updateProfileController = async (req, res) => {
     try {
         const { name, email, password, address, phone } = req.body;
@@ -211,8 +201,7 @@ export const updateProfileController = async (req, res) => {
 //orders
 export const getOrdersController = async (req, res) => {
     try {
-        const orders = await orderModel
-            .find({ buyer: req.user._id })
+        const orders = await orderModel.find({ buyer: req.user._id })
             .populate("products", "-photo")
             .populate("buyer", "name");
         res.json(orders);
@@ -228,8 +217,7 @@ export const getOrdersController = async (req, res) => {
 //orders
 export const getAllOrdersController = async (req, res) => {
     try {
-        const orders = await orderModel
-            .find({})
+        const orders = await orderModel.find({})
             .populate("products", "-photo")
             .populate("buyer", "name")
             .sort({ createdAt: "-1" });

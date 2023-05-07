@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-
+import banner from "../baner.webp"
 import { Badge } from "antd";
 import { useAuth } from "../context/auth";
 import SearchInput from "./Form/SearchInput";

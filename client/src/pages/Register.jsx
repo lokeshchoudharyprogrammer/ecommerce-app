@@ -28,6 +28,7 @@ export const Register = () => {
                 toast.success(res.data && res.data.message);
                 navigate("/login");
             } else {
+                console.log("Done")
                 toast.error(res.data.message);
             }
         } catch (error) {

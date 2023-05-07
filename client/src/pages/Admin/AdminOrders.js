@@ -20,10 +20,12 @@ const AdminOrders = () => {
   const [changeStatus, setCHangeStatus] = useState("");
   const [orders, setOrders] = useState([]);
   const [auth, setAuth] = useAuth();
-  const getOrders = async () => {
+  const getOrders = () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/auth/all-orders");
-      setOrders(data);
+      fetch("http://localhost:8080/api/v1/auth/all-orders").then((res)=>{
+        console.log(res)
+      })
+      // setOrders(data);
     } catch (error) {
       console.log(error);
     }
