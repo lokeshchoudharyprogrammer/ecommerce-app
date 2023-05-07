@@ -3,14 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from "react-router-dom"
-import { ContextApiProvider } from './ContextApi/ContextApi';
+import { AuthProvider } from './context/auth';
+import { SearchProvider } from "./context/search";
+import { CartProvider } from "./context/cart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ContextApiProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ContextApiProvider>
+  <SearchProvider>
+    <CartProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </CartProvider>
+
+  </SearchProvider>
 );
+
 

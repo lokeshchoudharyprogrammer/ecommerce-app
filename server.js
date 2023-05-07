@@ -5,33 +5,28 @@ import morgan from "morgan"
 import connection from "./config/db.js"
 import authrouter from "./routes/authRouter.js"
 import cors from "cors"
-
+import categoryRoutes from "./routes/categoryRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 dotenv.config()
-
-colors.setTheme({
-    silly: 'rainbow',
-    input: 'grey',
-    verbose: 'cyan',
-    prompt: 'grey',
-    info: 'green',
-    data: 'grey',
-    help: 'cyan',
-    warn: 'yellow',
-    debug: 'blue',
-    error: 'red'
-});
 
 const app = express()
 
+// middleware
 app.use(express.json())
 app.use(morgan("dev"))
 app.use(cors())
-app.use("/api/v1/auth", authrouter)
 
 connection()
 
+// Route
+
+app.use("/api/v1/auth", authrouter)
+app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/product", productRoutes);
+
+
 app.get("/", (req, res) => {
-    res.send("<h1>Hello How Are You Man</h1>")
+    res.send("<h1>Welcome to My Website</h1>")
 })
 
 

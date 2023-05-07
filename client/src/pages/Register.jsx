@@ -1,74 +1,118 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
-// import { ToastContainer, toast } from 'react-toastify';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 export const Register = () => {
-    const navigate = useNavigate()
-    const [name, setName] = useState("")
-    const [email, setemail] = useState("")
-    const [password, setpassword] = useState("")
-    const [number, setnumber] = useState("")
-    const [address, setaddress] = useState("")
-    const submitData = async (e) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [answer, setAnswer] = useState("");
+    const navigate = useNavigate();
 
-        e.preventDefault()
+    // form function
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-
-
-
-            await axios.post(`http://localhost:8080/api/v1/auth/register`,
-                {
-                    name, email, password, phone: number, address
-
-                }).then((res) => {
-                    if (res.data.success === true) {
-                        toast.success("Registration Done")
-                        navigate("/login")
-                    } else {
-
-                        toast.error("Registration Error")
-                    }
-                })
-
-           } catch (error) {
-            console.log("error")
-            toast.error("Registration Error")
-
+            const res = await axios.post("http://localhost:8080/api/v1/auth/register", {
+                name,
+                email,
+                password,
+                phone,
+                address,
+                answer,
+            });
+            if (res && res.data.success) {
+                toast.success(res.data && res.data.message);
+                navigate("/login");
+            } else {
+                toast.error(res.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("Something went wrong");
         }
-    }
+    };
 
     return (
-        <>
-            <Layout>
-
-                <div className='register'>
-                    <form onSubmit={submitData}>
-                        <div className="mb-3">
-
-                            <input onChange={(e) => setName(e.target.value)} type="text" placeholder='Name' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
-
-                        </div>
-                        <div className="mb-3">
-                            <input onChange={(e) => setemail(e.target.value)} type="email" placeholder='Email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
-
-                        </div>
-                        <div className="mb-3">
-                            <input onChange={(e) => setpassword(e.target.value)} type="password" placeholder='Password' className="form-control" id="exampleInputPassword1" required />
-                        </div>
-                        <div className="mb-3">
-                            <input onChange={(e) => setnumber(e.target.value)} type="number" placeholder='Phone Number' className="form-control" id="exampleInputPassword1" required />
-                        </div>
-                        <div className="mb-3">
-                            <input onChange={(e) => setaddress(e.target.value)} type="text" placeholder='Address' className="form-control" id="exampleInputPassword1" required />
-                        </div>
-
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
-
-                </div>
-            </Layout>
-        </>
-    )
+        <Layout title="Register - Ecommer App">
+            <div className="form-container" style={{ minHeight: "90vh" }}>
+                <form onSubmit={handleSubmit}>
+                    <h4 className="title">REGISTER FORM</h4>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Enter Your Name"
+                            required
+                            autoFocus
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Enter Your Email "
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="Enter Your Password"
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Enter Your Phone"
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="Enter Your Address"
+                            required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            placeholder="What is Your Favorite sports"
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">
+                        REGISTER
+                    </button>
+                </form>
+            </div>
+        </Layout>
+    );
 }

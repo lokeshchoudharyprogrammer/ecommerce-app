@@ -1,44 +1,39 @@
-import JWT from "bcrypt"
-import userModel from "../models/userModel.js"
 
 
-export const MustBeSigned = (req, res, next) => {
-    {
-        try {
-            const decoded = JWT.verify(req.headers.authorization, process.env._PRIVATE_KEY)
-            return req.user = decoded
-            next()
-        } catch (error) {
-            console.log("error")
-        }
-    }
-}
+import JWT from "jsonwebtoken";
+import userModel from "../models/userModel.js";
 
-
-// admin access 
-
-export const isAdmin = async (req, res, next) => {
-
+export const MustBeSigned = async (req, res, next) => {
     try {
+        const decode = JWT.verify(
+            req.headers.authorization,
+            process.env._PRIVATE_KEY
+        );
+        req.user = decode;
+        next();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
-        const user = await userModel.findById(req.user._id)
-
+//admin acceess
+export const isAdmin = async (req, res, next) => {
+    try {
+        const user = await userModel.findById(req.user._id);
         if (user.role !== 1) {
-
             return res.status(401).send({
                 success: false,
-                message: 'You are not allowed'
-
-            })
-
+                message: "UnAuthorized Access",
+            });
         } else {
-            next()
+            next();
         }
-
     } catch (error) {
-
-        res.send({ message: "Error" })
-
+        console.log(error);
+        res.status(401).send({
+            success: false,
+            error,
+            message: "Error in admin middelware",
+        });
     }
-
-}
+};

@@ -29,15 +29,20 @@ const userSchema = new mongoose.Schema({
 
     },
     address: {
-        type: String,
+        type: {},
         required: true,
         trim: true,
 
     },
     role: {
-        type: Boolean,
+        type: Number,
         default: 0
 
+    },
+   
+    answer: {
+        type: String,
+        required: true
     }
 
 }, {
