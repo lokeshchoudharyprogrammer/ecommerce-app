@@ -22,11 +22,10 @@ import Contact from "../pages/Contact";
 import { Policy } from "../pages/Policy";
 import { Pagenotefound } from "../pages/Pagenotefound";
 import { Register } from './../pages/Register';
-import { DashBoard } from './../pages/user/DashBoard';
 import { Login } from './../pages/Login';
 import PrivateRoute from "../components/Routes/Private";
 import { ForgetPassword } from './../pages/ForgetPassword';
-
+import Dashboard from "./../pages/user/DashBoard"
 const AllRouter = () => {
     return (
 
@@ -38,9 +37,9 @@ const AllRouter = () => {
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/category/:slug" element={<CategoryProduct />} />
                 <Route path="/search" element={<Search />} />
-                
+
                 <Route path="/dashboard" element={<PrivateRoute />} >
-                    <Route path="user" element={<DashBoard />} />
+                    <Route path="user" element={<Dashboard />} />
                     <Route path="user/orders" element={<Orders />} />
                     <Route path="user/profile" element={<Profile />} />
 

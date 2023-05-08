@@ -5,14 +5,16 @@ import userModel from "../models/userModel.js";
 
 export const MustBeSigned = async (req, res, next) => {
     try {
-        const decode = JWT.verify(
-            req.headers.authorization,
-            process.env._PRIVATE_KEY
-        );
+        // const decode = JWT.verify(
+        //     req.headers.authorization,
+        //     process.env.PRIVATE_KEY
+        // );
+        var decode = jwt.verify(req.headers.authorization, process.env.PRIVATE_KEY);
         req.user = decode;
+        console.log(decode)
         next();
     } catch (error) {
-        console.log(error);
+        console.log("error");
     }
 };
 
