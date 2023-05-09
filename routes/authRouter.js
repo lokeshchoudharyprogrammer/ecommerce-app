@@ -8,8 +8,6 @@ authrouter.post("/register", registerController)
 
 
 
-
-
 authrouter.post("/login", loginController)
 
 authrouter.post("/forget-password", forgotPasswordController)
