@@ -28,11 +28,11 @@ const swaggerDefinition = {
   },
 };
 
-const options = {
-  swaggerDefinition,
-  // Paths to files containing OpenAPI definitions
-  apis: ['./routes/*.js'],
-};
+// const options = {
+//   swaggerDefinition,
+//   // Paths to files containing OpenAPI definitions
+//   apis: ['./routes/*.js'],
+// };
 
 
 //
@@ -40,7 +40,7 @@ const options = {
 
 const app = express()
 
-const swaggerSpec = swaggerJSDoc(options);
+// const swaggerSpec = swaggerJSDoc(options);
 // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // app.use(
