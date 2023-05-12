@@ -37,7 +37,7 @@ const CreateCategory = () => {
   //get all cat
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get("http://localhost:8080/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -46,6 +46,8 @@ const CreateCategory = () => {
       toast.error("Something wwent wrong in getting catgeory");
     }
   };
+
+  // console.log(categories)
 
   useEffect(() => {
     getAllCategory();
@@ -56,9 +58,10 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/category/update-category/${selected._id}`,
+        `http://localhost:8080/api/v1/category/update-category/${selected._id}`,
         { name: updatedName }
       );
+      console.log(data)
       if (data?.success) {
         toast.success(`${updatedName} is updated`);
         setSelected(null);
@@ -74,10 +77,12 @@ const CreateCategory = () => {
   };
   //delete category
   const handleDelete = async (pId) => {
+   
     try {
       const { data } = await axios.delete(
-        `/api/v1/category/delete-category/${pId}`
+        `http://localhost:8080/api/v1/category/delete-category/${pId}`
       );
+      console.log(data)
       if (data.success) {
         toast.success(`category is deleted`);
 
@@ -115,6 +120,7 @@ const CreateCategory = () => {
                 </thead>
                 <tbody>
                   {categories?.map((c) => (
+
                     <>
                       <tr>
                         <td key={c._id}>{c.name}</td>

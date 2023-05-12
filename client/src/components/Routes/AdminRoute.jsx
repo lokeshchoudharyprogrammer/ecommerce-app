@@ -7,7 +7,7 @@ import Spinner from "../Spinner";
 export default function AdminRoute() {
     const [ok, setOk] = useState(false);
     const [auth, setAuth] = useAuth();
-
+    console.log(auth)
     useEffect(() => {
         const authCheck = async () => {
             const res = await axios.get("http://localhost:8080/api/v1/auth/admin-auth");
@@ -19,6 +19,7 @@ export default function AdminRoute() {
         };
         if (auth?.token) authCheck();
     }, [auth?.token]);
+    console.log(auth)
+    return <Outlet />
 
-    return ok ? <Outlet /> : <Spinner path="" />;
 }

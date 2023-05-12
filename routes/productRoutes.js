@@ -29,7 +29,7 @@ const router = express.Router();
  * tags:
  *   name: Create a new product
  *   description: The product managing API
- * api/v1/product/get-product:
+ * /api/v1/product/get-product:
  *   get:
  *     summary: Lists all the Products
  *     tags: [Product]
@@ -74,15 +74,15 @@ const router = express.Router();
  *         description: The Product id
  *     responses:
  *       200:
- *         description: The Product response by id
+ *         description: The book response by id
  *         contens:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Book'
  *       404:
- *         description: The Product was not found
+ *         description: The book was not found
  *   put:
- *    summary: Update the Product by the id
+ *    summary: Update the book by the id
  *    tags: [Product]
  *    parameters:
  *      - in: path

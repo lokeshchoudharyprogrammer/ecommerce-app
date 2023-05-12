@@ -19,11 +19,14 @@ const AdminOrders = () => {
   ]);
   const [changeStatus, setCHangeStatus] = useState("");
   const [orders, setOrders] = useState([]);
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
+
   const getOrders = () => {
     try {
-      fetch("http://localhost:8080/api/v1/auth/all-orders").then((res)=>{
-        console.log(res)
+      fetch("http://localhost:8080/api/v1/auth/all-orders").then((res) => {
+        return res.json()
+      }).then((response) => {
+        setOrders(response)
       })
       // setOrders(data);
     } catch (error) {
@@ -32,12 +35,15 @@ const AdminOrders = () => {
   };
 
   useEffect(() => {
-    if (auth?.token) getOrders();
-  }, [auth?.token]);
+    getOrders();
+  }, []);
+
+  // console.log(auth.token)
+  console.log(orders)
 
   const handleChange = async (orderId, value) => {
     try {
-      const { data } = await axios.put(`/api/v1/auth/order-status/${orderId}`, {
+      const { data } = await axios.put(`http://localhost:8080/api/v1/auth/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
@@ -53,7 +59,7 @@ const AdminOrders = () => {
         </div>
         <div className="col-md-9">
           <h1 className="text-center">All Orders</h1>
-          {orders?.map((o, i) => {
+          {orders && orders?.map((o, i) => {
             return (
               <div className="border shadow">
                 <table className="table">
@@ -95,7 +101,7 @@ const AdminOrders = () => {
                     <div className="row mb-2 p-3 card flex-row" key={p._id}>
                       <div className="col-md-4">
                         <img
-                          src={`/api/v1/product/product-photo/${p._id}`}
+                          src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
                           width="100px"

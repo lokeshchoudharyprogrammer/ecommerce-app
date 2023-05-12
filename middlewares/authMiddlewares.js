@@ -9,7 +9,7 @@ export const MustBeSigned = async (req, res, next) => {
         //     req.headers.authorization,
         //     process.env.PRIVATE_KEY
         // );
-        var decode = jwt.verify(req.headers.authorization, process.env.PRIVATE_KEY);
+        var decode = JWT.verify(req.headers.authorization, process.env.PRIVATE_KEY);
         req.user = decode;
         console.log(decode)
         next();
@@ -20,9 +20,11 @@ export const MustBeSigned = async (req, res, next) => {
 
 //admin acceess
 export const isAdmin = async (req, res, next) => {
+    
     try {
-        const user = await userModel.findById(req.user._id);
-        if (user.role !== 1) {
+        const users = await userModel.findById(req.user?._id);
+       
+        if (users?.role !== 1) {
             return res.status(401).send({
                 success: false,
                 message: "UnAuthorized Access",

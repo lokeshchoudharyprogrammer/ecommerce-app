@@ -32,6 +32,8 @@ const CreateProduct = () => {
     }
   };
 
+  console.log(category)
+
   useEffect(() => {
     getAllCategory();
   }, []);
@@ -48,7 +50,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("category", category);
       const { data } = axios.post(
-        "/api/v1/product/create-product",
+        "http://localhost:8080/api/v1/product/create-product",
         productData
       );
       if (data?.success) {

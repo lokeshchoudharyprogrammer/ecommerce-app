@@ -1,7 +1,7 @@
 import productModel from "../models/productModel.js";
 import categoryModel from "../models/categoryModel.js";
-// import orderModel from "../models/orderModel.js";
-// orderModel
+import orderModel from "../models/orderModel.js";
+
 import fs from "fs";
 import slugify from "slugify";
 import braintree from "braintree";
@@ -9,9 +9,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import { hashPassword, comparePassword } from './../helper/authHelper.js';
-import userModel from "../models/userModel.js";
-import orderModel from "../models/orderModel.js";
 //payment gateway
 var gateway = new braintree.BraintreeGateway({
     environment: braintree.Environment.Sandbox,
@@ -25,8 +22,7 @@ export const createProductController = async (req, res) => {
         const { name, description, price, category, quantity, shipping } =
             req.fields;
         const { photo } = req.files;
-        //alidation\
-        
+        //alidation
         switch (true) {
             case !name:
                 return res.status(500).send({ error: "Name is Required" });
@@ -338,6 +334,7 @@ export const braintreeTokenController = async (req, res) => {
             if (err) {
                 res.status(500).send(err);
             } else {
+                console.log(response)
                 res.send(response);
             }
         });
@@ -375,6 +372,7 @@ export const brainTreePaymentController = async (req, res) => {
                 }
             }
         );
+        console.log(newTransaction)
     } catch (error) {
         console.log(error);
     }

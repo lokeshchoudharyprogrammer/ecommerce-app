@@ -35,7 +35,7 @@ authrouter.put("/profile", MustBeSigned, updateProfileController);
 authrouter.get("/orders", MustBeSigned, getOrdersController);
 
 //all orders
-authrouter.get("/all-orders", MustBeSigned, isAdmin, getAllOrdersController);
+authrouter.get("/all-orders", getAllOrdersController);
 
 // order status update
 authrouter.put(

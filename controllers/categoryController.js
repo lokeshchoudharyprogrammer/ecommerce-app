@@ -1,7 +1,7 @@
 import categoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
 export const createCategoryController = async (req, res) => {
-  
+
   try {
     const { name } = req.body;
     if (!name) {
@@ -100,6 +100,7 @@ export const singleCategoryController = async (req, res) => {
 export const deleteCategoryCOntroller = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id)
     await categoryModel.findByIdAndDelete(id);
     res.status(200).send({
       success: true,

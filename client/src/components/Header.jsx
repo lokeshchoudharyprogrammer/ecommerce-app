@@ -22,9 +22,12 @@ const Header = () => {
         localStorage.removeItem("auth");
         toast.success("Logout Successfully");
     };
+
+
+    console.log(auth?.user?.role)
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top" >
                 <div className="container-fluid">
                     <button
                         className="navbar-toggler"
@@ -38,7 +41,7 @@ const Header = () => {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <Link to="/" className="navbar-brand">
+                        <Link to="/" className="navbar-brand" >
                             🛒 Ecommerce App
                         </Link>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
