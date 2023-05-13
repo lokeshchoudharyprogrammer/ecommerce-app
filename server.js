@@ -10,7 +10,8 @@ import swaggerUi from "swagger-ui-express"
 import cors from "cors"
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
-
+// var bodyParser = require('body-parser');
+import bodyParser from "body-parser"
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 dotenv.config()
@@ -25,9 +26,11 @@ app.use(morgan("dev"))
 app.use(cors())
 // app.use(express.static(path.join(__dirname, "./client/build")))
 // connection()
+// var bodyParser = require('body-parser');
 
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 // Route
-
 app.use("/api/v1/auth", authrouter)
 app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);

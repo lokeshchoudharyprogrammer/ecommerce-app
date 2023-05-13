@@ -23,7 +23,7 @@ const AdminOrders = () => {
 
   const getOrders = () => {
     try {
-      fetch("http://localhost:8080/api/v1/auth/all-orders").then((res) => {
+      fetch("https://cute-blue-chimpanzee-hose.cyclic.app/api/v1/auth/all-orders").then((res) => {
         return res.json()
       }).then((response) => {
         setOrders(response)
@@ -43,7 +43,7 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, value) => {
     try {
-      const { data } = await axios.put(`http://localhost:8080/api/v1/auth/order-status/${orderId}`, {
+      const { data } = await axios.put(`https://cute-blue-chimpanzee-hose.cyclic.app/api/v1/auth/order-status/${orderId}`, {
         status: value,
       });
       getOrders();
@@ -101,7 +101,7 @@ const AdminOrders = () => {
                     <div className="row mb-2 p-3 card flex-row" key={p._id}>
                       <div className="col-md-4">
                         <img
-                          src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                          src={`https://cute-blue-chimpanzee-hose.cyclic.app/api/v1/product/product-photo/${p._id}`}
                           className="card-img-top"
                           alt={p.name}
                           width="100px"
