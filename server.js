@@ -6,14 +6,12 @@ import mongoose from "mongoose";
 import path from "path"
 import connection from "./config/db.js"
 import authrouter from "./routes/authRouter.js"
-import swaggerUi from "swagger-ui-express"
 import cors from "cors"
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+// <<<<<<< HEAD
 // var bodyParser = require('body-parser');
 import bodyParser from "body-parser"
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 dotenv.config()
 
 
@@ -39,7 +37,6 @@ app.use("/api/v1/product", productRoutes);
 app.get("/", (req, res) => {
   res.send("<h1>Welcome to My Website</h1>")
 })
-
 
 // database tests
 
