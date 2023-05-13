@@ -9,12 +9,12 @@ import authrouter from "./routes/authRouter.js"
 import cors from "cors"
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+
 dotenv.config()
 
 
 
 const app = express()
-
 
 // middleware
 app.use(express.json())
