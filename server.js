@@ -24,6 +24,8 @@ app.use(morgan("dev"))
 app.use(cors())
 // app.use(express.static(path.join(__dirname, "./client/build")))
 // connection()
+
+
 // var bodyParser = require('body-parser');
 
 app.use(bodyParser.json({ limit: '50mb' }));
