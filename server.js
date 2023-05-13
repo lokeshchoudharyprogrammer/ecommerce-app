@@ -10,48 +10,14 @@ import swaggerUi from "swagger-ui-express"
 import cors from "cors"
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
-// const swaggerJSDoc = require('swagger-jsdoc');
-import swaggerJSDoc from "swagger-jsdoc"
-// const swaggerJSDoc = require('swagger-jsdoc');
-// const swaggerUi = require('swagger-ui-express');
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 dotenv.config()
-// const __filename = fileURLToPath(import.meta.url);
 
-// const __dirname = path.dirname(__filename);
-const swaggerDefinition = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Express API for JSONPlaceholder',
-    version: '1.0.0',
-  },
-};
-
-// const options = {
-//   swaggerDefinition,
-//   // Paths to files containing OpenAPI definitions
-//   apis: ['./routes/*.js'],
-// };
-
-
-//
 
 
 const app = express()
-
-// const swaggerSpec = swaggerJSDoc(options);
-// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-
-// app.use(
-//     '/api-docs',
-//     swaggerUi.serve,
-//     swaggerUi.setup(swaggerDocument, {
-//         explorer: true,
-//         customCssUrl:
-//             "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css",
-//     })
-// );
 
 // middleware
 app.use(express.json())
@@ -71,10 +37,6 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to My Website</h1>")
 })
 
-// app.use("*", (req, res) => {
-//   res.send(path.join(__dirname, "./client/build/index.html"))
-
-// })
 
 // database tests
 
