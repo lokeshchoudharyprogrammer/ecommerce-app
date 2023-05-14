@@ -66,57 +66,72 @@ Backend Link => https://cute-blue-chimpanzee-hose.cyclic.app/
    
  Product Router=>   https://cute-blue-chimpanzee-hose.cyclic.app/api/v1/product
 
-router.post(
+
+     router.post(
     "/create-product",
     MustBeSigned,
     isAdmin,
     formidable(),
     createProductController
-);
+     );
 //routes
-router.put(
+         
+    router.put(
     "/update-product/:pid",
     MustBeSigned,
     isAdmin,
     formidable(),
     updateProductController
-);   
+    );   
    
 //get products
-router.get("/get-product", getProductController);
+             
+             router.get("/get-product", getProductController);
 
 //single product
-router.get("/get-product/:slug", getSingleProductController);
+
+             router.get("/get-product/:slug", getSingleProductController);
 
 //get photo
-router.get("/product-photo/:pid", productPhotoController);
+                
+                router.get("/product-photo/:pid", productPhotoController);
 
 //delete rproduct
-router.delete("/delete-product/:pid", deleteProductController);
+
+                  router.delete("/delete-product/:pid", deleteProductController);
 
 //filter product
-router.post("/product-filters", productFiltersController);
+
+
+          router.post("/product-filters", productFiltersController);
 
 //product count
-router.get("/product-count", productCountController);
+                     
+          router.get("/product-count", productCountController);
 
 //product per page
-router.get("/product-list/:page", productListController);
+               
+         router.get("/product-list/:page", productListController);
 
 //search product
-router.get("/search/:keyword", searchProductController);
+
+          router.get("/search/:keyword", searchProductController);
 
 //similar product
-router.get("/related-product/:pid/:cid", realtedProductController);
+           
+           router.get("/related-product/:pid/:cid", realtedProductController);
 
 //category wise product
-router.get("/product-category/:slug", productCategoryController);
+
+          router.get("/product-category/:slug", productCategoryController);
 
 //payments routes
 //token
-router.get("/braintree/token", braintreeTokenController);
+         
+         router.get("/braintree/token", braintreeTokenController);
 
 //payments
-router.post("/braintree/payment", MustBeSigned, brainTreePaymentController);
+
+        router.post("/braintree/payment", MustBeSigned, brainTreePaymentController);
 
 
