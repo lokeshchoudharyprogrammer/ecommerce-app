@@ -55,11 +55,14 @@ Backend Link => https://cute-blue-chimpanzee-hose.cyclic.app/
   
                     /update-category/:id
   //getALl category                 
-                    /get-category
+                 
+                 /get-category
    //single category                
-                    /single-category/:slug
+                   
+                   /single-category/:slug
    //delete category                
-                    /delete-category/:id
+                   
+                   /delete-category/:id
                     
                     
 
