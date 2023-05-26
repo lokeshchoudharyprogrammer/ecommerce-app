@@ -20,7 +20,7 @@ Dillinger uses a number of open source projects to work properly:
 And of course Dillinger itself is open source with a [public repository][dill]
 on GitHub.
 
-## Snippets of Our Website-
+<!-- ## Snippets of Our Website-
 
 <img  src='./client/image/homepage.png' alt='homepage' />
 <br/>
@@ -29,8 +29,8 @@ on GitHub.
 <br/>
 <br/>
 <img  src='./client/image/cartpage.png' alt='Cartpage' />
-
-Backend Link => https://cute-blue-chimpanzee-hose.cyclic.app/
+<!-- 
+Backend Link => https://cute-blue-chimpanzee-hose.cyclic.app/ -->
 
 
   Auth Router =>   https://cute-blue-chimpanzee-hose.cyclic.app/api/v1/auth
@@ -138,3 +138,4 @@ Backend Link => https://cute-blue-chimpanzee-hose.cyclic.app/
         router.post("/braintree/payment", MustBeSigned, brainTreePaymentController);
 
 
+ -->
